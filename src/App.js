@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useSpring, animated } from 'react-spring'
+
+import GameBoard from './components/GameBoard'
+
+import './styles/main.scss'
 
 function App() {
+
+  const props = useSpring ({ opacity: 1, from: { opacity: 0 } })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <animated.div style = {props} className = "container">
+    <h1>Cellular Autonama Simulation</h1>
+    <h3>Based on John Conway's <a
+      href = 'https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life'
+      target = "_blank"
+      rel = "noopener noreferrer"
+      >
+      Game of Life</a> Simulation</h3>
+    <br/>
+    <GameBoard/>
+    </animated.div>
   );
 }
 
